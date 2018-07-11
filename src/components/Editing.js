@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import * as Types from '../actions';
+
 
 
 class Edit extends Component{
@@ -49,7 +51,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
 	return {
-        updated_post: (data,id) => dispatch({ type: 'UPDATE_POST', data ,id})
+        updated_post: (data,id) => dispatch({ type: Types.UPDATE_POST, data ,id})
         
 	};
 };

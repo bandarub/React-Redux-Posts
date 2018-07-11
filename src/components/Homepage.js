@@ -6,6 +6,8 @@ import {
     NavLink
   }from 'react-router-dom';
 import PostIndex from './PostIndex';
+import * as Types from '../actions';
+
 
 class  Home extends Component{
 
@@ -31,7 +33,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		getData: data => dispatch({ type: 'POSTS_INDEX', data })
+		getData: data => dispatch({ type: Types.POSTS_INDEX, data })
 	};
 };
 export default connect(

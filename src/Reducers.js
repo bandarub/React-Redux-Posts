@@ -1,11 +1,12 @@
 import { initState } from './data.js';
+import * as Types from './actions';
 
 
 export const reducer = (state = initState.posts, action) => {
 	switch (action.type) {
-		case 'POSTS_INDEX':
+		case Types.POSTS_INDEX:
 						return [...state, ...action.data];
-		case 'CREATE_POST':
+		case Types.CREATE_POST:
 						const newPost={
 							id:action.data.id,				
 							title:action.data.title,
@@ -19,10 +20,10 @@ export const reducer = (state = initState.posts, action) => {
 						else
 						{alert('enter valid inputs')}
 						break;
-		case 'DELETE_POST':
+		case Types.DELETE_POST:
 						return state.filter(post=>post.id !== action.id
 						);
-		case 'UPDATE_POST':
+		case Types.UPDATE_POST:
 						return state.map((post) => {
 						if (post.id === action.id) {
 							console.log(action.data)

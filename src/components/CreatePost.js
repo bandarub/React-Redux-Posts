@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink }from 'react-router-dom';
+import * as Types from '../actions';
+
 
 
 class Createpost extends Component{
@@ -44,7 +46,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-        new_post: (data,id) => dispatch({ type: 'CREATE_POST', data ,id})
+        new_post: (data,id) => dispatch({ type: Types.CREATE_POST, data ,id})
         
 	};
 };

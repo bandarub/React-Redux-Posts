@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import {
   NavLink
 }from 'react-router-dom';
+import * as Types from '../actions';
+
 
 class DisplayPost extends Component{
  
@@ -20,7 +22,7 @@ class DisplayPost extends Component{
       </div>
       <div>
       <button id= {id}><NavLink   to={`/posts/${ selctedPost.id}/edit`}>Edit</NavLink></button>
-      <button  onClick={() => this.props.dispatch({ type: 'DELETE_POST', id: id })}><NavLink id= {id} to='/'>Delete</NavLink></button>
+      <button  onClick={() => this.props.dispatch({ type: Types.DELETE_POST, id: id })}><NavLink id= {id} to='/'>Delete</NavLink></button>
       </div>
   </div>
     </div>)}

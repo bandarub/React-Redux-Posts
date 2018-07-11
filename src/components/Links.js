@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import {
-    BrowserRouter as Router,
+	HashRouter,
     Route,
   }from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -26,14 +26,14 @@ class  Routing extends Component{
 	}
 	render(){
     return(<div>
-        	 <Router>
+        	 <HashRouter>
 				<div>				
 				<Route exact path='/newpost' render={(props)=>(<Createpost {...props} action='Submit'  />)}/>
 				<Route exact path='/' render={(props)=>(<Home {...props}/>)}/>	
 				<Route exact path='/posts/:postId' render={(props)=>(<DisplayPost {...props} getPost={this.getSelectedPost}/>)}/>
 				<Route exact path = '/posts/:postId/edit'  render = {(props)=>(<Editing {...props} getPost={this.getSelectedPost} id={this.id} />)}/>			
 				</div>
-			</Router> 
+			</HashRouter> 
     </div>)
 }
 }
