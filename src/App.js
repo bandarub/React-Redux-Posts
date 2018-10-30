@@ -1,25 +1,33 @@
 import React, { Component } from 'react';
-
-import './App.css';
 import { connect } from 'react-redux';
 
-// import Createpost from './components/CreatePost';
-// import Home from './components/Homepage';
 import Routing from './components/Links';
 
+import './App.css';
+
 class App extends Component {
+	getSelectedPost = (id) => { 
+		const {posts} = this.props;
+		let foundPost;
+		for(let post of posts){
+			if(post.id === id){
+				foundPost = post;
+			}
+		}		
+		return foundPost;
+	}
 	render() {	
+		const { posts } = this.props;
 		return (
 			<div className="App">
-				<Routing />
+				<Routing posts={posts} getSelectedPost={this.getSelectedPost}/>
 			</div>
 		);
 	}
 }
-
 const mapStateToProps = state => {
 	return {
-		posts: state.posts
+		posts: state
 	}
   }
   

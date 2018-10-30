@@ -1,46 +1,66 @@
-import React,{ Component } from 'react';
-import {
-	HashRouter,
-    Route,
-  }from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { HashRouter, Route } from "react-router-dom";
 
+import Createpost from "./CreatePost";
+import Home from "./Homepage";
+import DisplayPost from "./DisplayPost";
+import Editing from "./Editing";
 
-import Createpost from './CreatePost';
-import Home from './Homepage';
-import DisplayPost from './DisplayPost';
-import Editing  from './Editing';
+const Routing = props => {
+  const { posts, getSelectedPost } = props;
+  return (
+    <div>
+      <HashRouter>
+        <div>
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <Home
+                {...props}
+                posts={posts}
+                getSelectedPost={getSelectedPost}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/newpost"
+            render={props => (
+              <Createpost
+                {...props}
+                posts={posts}
+                getSelectedPost={getSelectedPost}
+              />
+            )}
+          />
 
-class  Routing extends Component{
+          <Route
+            exact
+            path="/posts/:postId"
+            render={props => (
+              <DisplayPost
+                {...props}
+                posts={posts}
+                getSelectedPost={getSelectedPost}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/posts/:postId/edit"
+            render={props => (
+              <Editing
+                {...props}
+                posts={posts}
+                getSelectedPost={getSelectedPost}
+              />
+            )}
+          />
+        </div>
+      </HashRouter>
+    </div>
+  );
+};
 
-	getSelectedPost = (id) => { 
-		const {posts} = this.props;
-		let foundPost;
-		for(let post of posts){
-			if(post.id === id){
-				foundPost = post;
-			}
-			// foundPost;
-		}		
-		return foundPost;
-	}
-	render(){
-    return(<div>
-        	 <HashRouter>
-				<div>				
-				<Route exact path='/newpost' render={(props)=>(<Createpost {...props} action='Submit'  />)}/>
-				<Route exact path='/' render={(props)=>(<Home {...props}/>)}/>	
-				<Route exact path='/posts/:postId' render={(props)=>(<DisplayPost {...props} getPost={this.getSelectedPost}/>)}/>
-				<Route exact path = '/posts/:postId/edit'  render = {(props)=>(<Editing {...props} getPost={this.getSelectedPost} id={this.id} />)}/>			
-				</div>
-			</HashRouter> 
-    </div>)
-}
-}
-const mapStateToProps = state => {
-	return {
-		posts: state
-	}
-  }
-  
-export default connect(mapStateToProps, null)(Routing);
+export default Routing;

@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
+import {Link} from 'react-router-dom';
 
-class PostIndex extends Component {
-    handleClick=(e)=>{ 
-        this.props.history.push(`/posts/${this.props.post.id}`)
-    }
-    render(){
-        return(<div className='small-post' id={this.props.post.id} onClick={this.handleClick} key={this.props.post.id}>
-            <label id={this.props.post.id}  >{this.props.post.title} </label>
-            <label id={this.props.post.id} >{this.props.post.category}</label>
-            </div>)
-    }   
-}
-export default connect() (PostIndex);
+
+const PostIndex = props => {
+  const post = props.post;
+  return (
+    <Link exact='true' to={`posts/${post.id}`} className="small-post">      
+      <label id={post.id}>{post.title} </label>
+      <label id={post.id}>{post.category}</label>
+    </Link>
+  );
+};
+
+export default PostIndex;

@@ -1,42 +1,29 @@
-import React,{ Component } from 'react';
+import React, { Component } from "react";
 
-import { connect } from 'react-redux';
-import {
-   
-    NavLink
-  }from 'react-router-dom';
-import PostIndex from './PostIndex';
-import * as Types from '../actions';
+import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
+import PostIndex from "./PostIndex";
+import * as Types from "../actions";
 
-
-class  Home extends Component{
-
-    constructor(props){
-        super(props);
-        this.state={data:this.props.data} }
-    render(){  
-           
-    return(<div>
-        <h1 className='add-post'><NavLink exact to='/newpost'>Add Post</NavLink></h1>
-        <div className='postSummery'>
-        {this.props.data.map((post)=>
-        <PostIndex key={Math.random()}  post={post} {...post} history={this.props.history} />)} 
-        </div>                            
-    </div>)}
+class Home extends Component {
+  render() {
+    const { posts } = this.props;
+    return (
+      <div>
+        <NavLink exact to="/newpost">
+          {" "}
+          <button type="button" className="addPost postRight">
+            Add Post
+          </button>
+        </NavLink>
+        <div className="postSummery">
+          {posts.map(post => (
+            <PostIndex key={post.id} post={post} history={this.props.history} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 }
 
-const mapStateToProps = state => {
-	return {
-		data: state
-	};
-};
-
-const mapDispatchToProps = dispatch => {
-	return {
-		getData: data => dispatch({ type: Types.POSTS_INDEX, data })
-	};
-};
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps	
-)(Home);
+export default Home;
