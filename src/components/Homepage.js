@@ -8,7 +8,7 @@ class Home extends Component {
   render() {
     const { posts } = this.props;
     return (
-      <div>
+      <div className="post-index">
         <Link to="/newpost" className="postRight" >Add Post</Link>
         <div className="postSummery">
           {posts.map(post => (

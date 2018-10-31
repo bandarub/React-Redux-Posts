@@ -6,10 +6,13 @@ import { Link } from 'react-router-dom';
 const PostIndex = props => {
   const { post } = props;
   return (
-    <Link exact='true' to={`posts/${post.id}`} className="small-post">      
-      <label id={post.id}>{post.title} </label>
-      <label id={post.id}>{post.category}</label>
-    </Link>
+    <ul className="small-post">
+    <li className="post-title">{post.title} </li>
+    <li className="post-category"> #{" "}{post.category} </li>
+    <p>{post.detail.slice(0, 50)}...</p>
+    <Link to={`posts/${post.id}`}>Read More</Link>
+    </ul>
+
   );
 };
 

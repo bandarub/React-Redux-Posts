@@ -11,11 +11,11 @@ const DisplayPost = props => {
     props.history.push("/");
   };
   return (
-    <div>
+    <div >
       <Link to="/" className="postRight">
         Posts
       </Link>
-      <div>
+      <div className="full-post">
         <h4>Title</h4>
         <p>{selctedPost.title}</p>
         <h4>Category</h4>
