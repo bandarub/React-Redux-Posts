@@ -9,25 +9,37 @@ form .errorMsg {
   color: red;
   font-style: italic;
 }
-form label{
+form label {
   display: block;
-  margin-top:0.5vw;
+  margin-top: 0.5vw;
 }
-.buttonsGrp{
-  display:block;
+.buttonsGrp {
+  display: block;
 }
-button{
+button {
   border: 2px dashed rgb(201, 194, 194);
   background: transparent;
-  padding: 10px 25px;
+  padding:1vw;
   cursor: pointer;
+  font-size: 1.5vw;
   text-align: right;
   margin-right: 15px;
 }
-button:hover{
+button:hover {
   background-color: #ccc;
 }
-input,.text-area {
+a {
+  background: transparent;
+  cursor: pointer;
+  padding:1vw;
+  font-size: 1.5vw;
+  text-decoration: none;
+}
+a:hover {
+  background-color: #ccc;
+}
+input,
+.text-area {
   width: 100%;
   margin-bottom: 10px;
 }
@@ -47,10 +59,6 @@ input,.text-area {
 .small-post:hover {
   background-color: #ccc;
 }
-a {
-  text-decoration: none;
-  cursor:pointer;
-}
 .post-read {
   border: 1px solid black;
   margin: 3vw;
@@ -62,6 +70,6 @@ a {
   font-weight: bold;
 }
 
-.postRight{
-margin-left:90%;
+.postRight {
+  margin-left: 38vw;
 }

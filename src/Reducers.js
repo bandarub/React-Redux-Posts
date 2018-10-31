@@ -4,12 +4,13 @@ import * as Types from "./actions";
 export const reducer = (state = initState.posts, action) => {
   switch (action.type) {
     case Types.CREATE_POST:
-      return [...state.concat(action.data)];
-	case Types.DELETE_POST:
+      return [...state.concat(action.newPost)];
+    case Types.DELETE_POST:
       return state.filter(post => post.id !== action.deletedId);
     case Types.UPDATE_POST:
+    console.log(action);
       return state.map(post => {
-        if (post.id === action.id) {
+        if (post.id === action.data.id) {
           return {
             ...post,
             title: action.data.title,

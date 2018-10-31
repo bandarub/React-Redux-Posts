@@ -1,14 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as Types from "../actions";
 
 const DisplayPost = props => {
   const id = Number(props.match.params.postId);
   const selctedPost = props.getSelectedPost(id);
+  const handleDelete = () => {
+    props.getPostDelete(id);
+    props.history.push("/");
+  };
   return (
     <div>
-      <NavLink to="/" className="postRight">Posts</NavLink>
+      <Link to="/" className="postRight">
+        Posts
+      </Link>
       <div>
         <h4>Title</h4>
         <p>{selctedPost.title}</p>
@@ -17,17 +23,17 @@ const DisplayPost = props => {
         <h4>Content</h4>
         <p>{selctedPost.detail}</p>
         <div>
-          <button id={id}>
-            <NavLink to={`/posts/${selctedPost.id}/edit`}>Edit</NavLink>
-          </button>
+          {/* <Link to={`/posts/${selctedPost.id}/edit`}>Edit</Link>  */}
           <button
             id={id}
             onClick={() => {
-              props.getPostDelete(id);
-              props.history.push("/");
+              props.history.push(`/posts/${selctedPost.id}/edit`);
             }}
           >
-            Delete{" "}
+            Edit
+          </button>
+          <button id={id} onClick={handleDelete}>
+            Delete
           </button>
         </div>
       </div>
@@ -38,8 +44,8 @@ const DisplayPost = props => {
 const mapDispatchToProps = dispatch => {
   return {
     getPostDelete: deletedId => {
-      dispatch(Types.deletePost(deletedId))}
-
+      dispatch(Types.deletePost(deletedId));
+    }
   };
 };
 export default connect(

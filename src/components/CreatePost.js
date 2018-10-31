@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import * as Types from "../actions";
 
 import Form from "./Form";
@@ -33,20 +34,16 @@ class Createpost extends Component {
     this.props.new_post(this.state);
     this.props.history.push("/");
   };
-  handleCancel = () => {
-    this.props.history.push("/");
-  };
+
   validate = (title, category, detail) => {
     const errors = {
-      title: /^[a-zA-Z.|\s]{2,20}$/.test(title)
+      title: /^[\w.|\s|]{2,20}$/.test(title)
         ? ""
         : "please enter Title(must not excced 20 words)",
-      category: /^[a-zA-Z.|\s]{2,20}$/.test(category)
+      category: /^[\w.|\s]{2,20}$/.test(category)
         ? ""
-        : "please enter Category(must not exceed 20 words",
-      detail: /[a-zA-Z]+[\s.][a-zA-Z]+$/.test(detail)
-        ? ""
-        : "please enter datails"
+        : "please enter Category(must not exceed 20 words)",
+      detail: /[\w]+[|\s.][\w]+$/.test(detail) ? "" : "please enter datails"
     };
     return errors;
   };
@@ -66,14 +63,17 @@ class Createpost extends Component {
           handleFocus={this.handleFocus}
           errors={errors}
         />
-        <div className="buttonsGrp">
-          <button type="submit" disabled={this.isSubmitDisabled(errors)}>
-            Save
-          </button>
-          <button type="button" onClick={this.handleCancel}>
-            Cancel
-          </button>
-        </div>
+        <button type="submit" disabled={this.isSubmitDisabled(errors)}>
+          Save
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            this.props.history.push("/");
+          }}
+        >
+          Cancel
+        </button>
       </form>
     );
   }
@@ -87,7 +87,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    new_post: (data, id) => dispatch({ type: Types.CREATE_POST, data, id })
+    new_post : data => dispatch(Types.createPost(data))
+
   };
 };
 

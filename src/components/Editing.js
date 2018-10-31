@@ -21,42 +21,35 @@ class Edit extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   handleUpdate = () => {
-    const { id } = this.state;
-    this.props.updated_post(this.state, id);
+    this.props.updated_post(this.state);
     this.props.history.push("/");
   };
-
   render() {
     return (
       <div>
         <Form {...this.state} handlePost={this.handlePost} />
         <div className="buttonsGrp">
           <button onClick={this.handleUpdate}>Update</button>
-        <button
-          onClick={() => {
-            this.props.history.push("/");
-          }}
-        >
-          Cancel
-        </button>
+          <button
+            onClick={() => {
+              this.props.history.push("/");
+            }}
+          >
+            Cancel
+          </button>
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    newdata: state
-  };
-};
 const mapDispatchToProps = dispatch => {
   return {
-    updated_post: (data, id) => dispatch({ type: Types.UPDATE_POST, data, id })
+    updated_post: data => dispatch(Types.updatePost(data))
   };
 };
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Edit);
