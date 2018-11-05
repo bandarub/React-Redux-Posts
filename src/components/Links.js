@@ -5,6 +5,8 @@ import Createpost from "./CreatePost";
 import Home from "./Homepage";
 import DisplayPost from "./DisplayPost";
 import Editing from "./Editing";
+import About from "./About";
+import Contact from "./Contact";
 
 const Routing = props => {
   const { posts, getSelectedPost } = props;
@@ -24,7 +26,7 @@ const Routing = props => {
             )}
           />
           <Route
-            exact
+          exact
             path="/newpost"
             render={props => (
               <Createpost
@@ -34,10 +36,10 @@ const Routing = props => {
               />
             )}
           />
-
           <Route
-            exact
+          exact
             path="/posts/:postId"
+            active="black"
             render={props => (
               <DisplayPost
                 {...props}
@@ -56,6 +58,16 @@ const Routing = props => {
                 getSelectedPost={getSelectedPost}
               />
             )}
+          />
+          <Route
+            exact
+            path="/About"
+            component={About}
+          />
+          <Route
+            exact
+            path="/Contact"
+            component={Contact}
           />
         </div>
       </HashRouter>

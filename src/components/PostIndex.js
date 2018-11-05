@@ -1,18 +1,23 @@
 import React from "react";
 
-import { Link } from 'react-router-dom';
-
+import { NavLink } from "react-router-dom";
 
 const PostIndex = props => {
   const { post } = props;
   return (
     <ul className="small-post">
-    <li className="post-title">{post.title} </li>
-    <li className="post-category"> #{" "}{post.category} </li>
-    <p>{post.detail.slice(0, 50)}...</p>
-    <Link to={`posts/${post.id}`}>Read More</Link>
+      <div className="post-heading">
+        <div>
+          <li className="post-title">{post.title} </li>
+          <li className="post-category"> # {post.category} </li>
+        </div>
+      </div>
+      <p className="post-summary">
+        {post.detail.slice(0, 170)}
+        ...
+      </p>
+      <NavLink to={`posts/${post.id}`}>Read More</NavLink>
     </ul>
-
   );
 };
 

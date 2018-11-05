@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as Types from "../actions";
+import * as Types from "../Actions";
 
 import Form from "./Form";
 

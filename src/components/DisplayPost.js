@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import * as Types from "../actions";
+import * as Types from "../Actions";
+
+import Navigation from "./Navigation";
 
 const DisplayPost = props => {
   const id = Number(props.match.params.postId);
@@ -12,9 +13,7 @@ const DisplayPost = props => {
   };
   return (
     <div >
-      <Link to="/" className="postRight">
-        Posts
-      </Link>
+      <Navigation/>
       <div className="full-post">
         <h4>Title</h4>
         <p>{selctedPost.title}</p>
@@ -23,7 +22,7 @@ const DisplayPost = props => {
         <h4>Content</h4>
         <p>{selctedPost.detail}</p>
         <div>
-          {/* <Link to={`/posts/${selctedPost.id}/edit`}>Edit</Link>  */}
+          {/* <NavLink to={`/posts/${selctedPost.id}/edit`}>Edit</NavLink>  */}
           <button
             id={id}
             onClick={() => {

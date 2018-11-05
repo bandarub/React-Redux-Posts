@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-import * as Types from "../actions";
+import * as Types from "../Actions";
 
 import Form from "./Form";
+import Navigation from "./Navigation";
 
 class Createpost extends Component {
   state = {
@@ -56,25 +56,30 @@ class Createpost extends Component {
     const { title, category, detail } = this.state;
     const errors = this.validate(title, category, detail);
     return (
-      <form onSubmit={this.handleSubmit}>
-        <Form
-          {...this.state}
-          handlePost={this.handlePost}
-          handleFocus={this.handleFocus}
-          errors={errors}
-        />
-        <button type="submit" disabled={this.isSubmitDisabled(errors)}>
-          Save
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            this.props.history.push("/");
-          }}
-        >
-          Cancel
-        </button>
-      </form>
+      <div>
+        <Navigation />
+        <form onSubmit={this.handleSubmit}>
+          <Form
+            {...this.state}
+            handlePost={this.handlePost}
+            handleFocus={this.handleFocus}
+            errors={errors}
+          />
+          <div className="btn-grp">
+            <button type="submit" disabled={this.isSubmitDisabled(errors)}>
+              Save
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                this.props.history.push("/");
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
     );
   }
 }
@@ -87,8 +92,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    new_post : data => dispatch(Types.createPost(data))
-
+    new_post: data => dispatch(Types.createPost(data))
   };
 };
 

@@ -1,5 +1,5 @@
-import { initState } from "./data.js";
-import * as Types from "./actions";
+import { initState } from "../data.js";
+import * as Types from "../Actions";
 
 export const reducer = (state = initState.posts, action) => {
   switch (action.type) {
@@ -8,7 +8,6 @@ export const reducer = (state = initState.posts, action) => {
     case Types.DELETE_POST:
       return state.filter(post => post.id !== action.deletedId);
     case Types.UPDATE_POST:
-    console.log(action);
       return state.map(post => {
         if (post.id === action.data.id) {
           return {
