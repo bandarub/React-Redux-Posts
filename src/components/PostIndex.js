@@ -13,7 +13,7 @@ const PostIndex = props => {
         </div>
       </div>
       <p className="post-summary">
-        {post.detail.slice(0, 170)}
+        {post.detail.slice(0,30)}
         ...
       </p>
       <NavLink to={`posts/${post.id}`}>Read More</NavLink>

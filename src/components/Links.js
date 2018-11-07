@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { HashRouter, Route } from "react-router-dom";
 
-import Createpost from "./CreatePost";
 import Home from "./Homepage";
 import DisplayPost from "./DisplayPost";
-import Editing from "./Editing";
 import About from "./About";
-import Contact from "./Contact";
+import Navigation from "./Navigation";
+import Form from "./Form";
 
 const Routing = props => {
   const { posts, getSelectedPost } = props;
@@ -14,6 +13,7 @@ const Routing = props => {
     <div>
       <HashRouter>
         <div>
+          <Navigation/>
           <Route
             exact
             path="/"
@@ -29,9 +29,10 @@ const Routing = props => {
           exact
             path="/newpost"
             render={props => (
-              <Createpost
+              <Form
                 {...props}
                 posts={posts}
+                action="add"
                 getSelectedPost={getSelectedPost}
               />
             )}
@@ -52,7 +53,8 @@ const Routing = props => {
             exact
             path="/posts/:postId/edit"
             render={props => (
-              <Editing
+              <Form
+              action="edit"
                 {...props}
                 posts={posts}
                 getSelectedPost={getSelectedPost}
@@ -63,11 +65,6 @@ const Routing = props => {
             exact
             path="/About"
             component={About}
-          />
-          <Route
-            exact
-            path="/Contact"
-            component={Contact}
           />
         </div>
       </HashRouter>

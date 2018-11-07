@@ -1,13 +1,10 @@
-export const POSTS_INDEX = "POSTS_INDEX";
-export const CREATE_POST = "CREATE_POST";
 export const DELETE_POST = "DELETE_POST";
-export const UPDATE_POST = "UPDATE_POST";
+export const SAVE_POST = "SAVE_POST";
 
-
-export const createPost = newPost => {
+export const savePost = post => {
   return {
-    type: CREATE_POST,
-    newPost
+    type: SAVE_POST,
+    post
   };
 };
 
@@ -18,9 +15,3 @@ export const deletePost = deletedId => {
   };
 };
 
-export const updatePost = data => {
-  return {
-    type: UPDATE_POST,
-    data
-  };
-};

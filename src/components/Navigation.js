@@ -9,7 +9,7 @@ const Navigation = () => {
       </div>
       <div className="navigation">
         <NavLink
-        exact
+          exact
           to="/"
           activeStyle={{
             fontWeight: "bold",
@@ -35,15 +35,6 @@ const Navigation = () => {
           }}
         >
           About App
-        </NavLink>
-        <NavLink
-          to="/Contact"
-          activeStyle={{
-            fontWeight: "bold",
-            color: "orange"
-          }}
-        >
-          Contact
         </NavLink>
       </div>
     </div>

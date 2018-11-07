@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import * as Types from "../Actions";
 
-import Navigation from "./Navigation";
 
 const DisplayPost = props => {
   const id = Number(props.match.params.postId);
@@ -13,7 +12,6 @@ const DisplayPost = props => {
   };
   return (
     <div >
-      <Navigation/>
       <div className="full-post">
         <h4>Title</h4>
         <p>{selctedPost.title}</p>
@@ -21,17 +19,17 @@ const DisplayPost = props => {
         <p>{selctedPost.category}</p>
         <h4>Content</h4>
         <p>{selctedPost.detail}</p>
-        <div>
-          {/* <NavLink to={`/posts/${selctedPost.id}/edit`}>Edit</NavLink>  */}
+        <div className="btn-grp">
           <button
             id={id}
+            className="save"
             onClick={() => {
               props.history.push(`/posts/${selctedPost.id}/edit`);
             }}
           >
             Edit
           </button>
-          <button id={id} onClick={handleDelete}>
+          <button id={id} onClick={handleDelete} className="cancel">
             Delete
           </button>
         </div>

@@ -10,7 +10,6 @@ class Home extends Component {
     const { posts } = this.props;
     return (
       <div className="post-index">
-        <Navigation />
         <div className="postSummery">
           {posts.map(post => (
             <PostIndex key={post.id} post={post} history={this.props.history} />

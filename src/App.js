@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Routing from './components/Links';
+import Footer from "./components/Footer";
 
 import './App.css';
 
@@ -21,6 +22,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Routing posts={posts} getSelectedPost={this.getSelectedPost}/>
+				<Footer/>
 			</div>
 		);
 	}
