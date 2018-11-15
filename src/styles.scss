@@ -1,0 +1,335 @@
+@import "./index.scss";
+:root {
+  --primary-font: "Pattaya", sans-serif;
+  --primary-color: #f19733;
+}
+.App {
+  position: relative;
+}
+.collapsableNavigation ul {
+  list-style: none;
+  color: white;
+  font-family: var(--primary-font);
+  margin: 0;
+  width: 100%;
+  li {
+    display: block;
+    height: 20px;
+    padding: 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  label:before {
+    height: 2px;
+    width: 20px;
+    background: #333;
+    display: inline-block;
+    content: "";
+    box-shadow: 0px -5px 0px 0px #333, 0px -10px 0px 0px #333;
+    margin-right: 10px;
+    transition: all 0.5s;
+    position: relative;
+    opacity: 1;
+  }
+  label {
+    display: block;
+    padding-left: 50px;
+    padding-bottom: 10px;
+    // width:10%;
+   background-color: var(--primary-color);
+    cursor: pointer;
+  }
+  input[type="checkbox"] {
+    visibility: hidden;
+    position: absolute;
+  }
+  #collapse:checked ~ li {
+    margin-top: 0;
+    padding-left: 50px;
+    opacity: 1;
+    width:10%;
+    background-color: var(--primary-color);
+  }
+  #collapse:checked + label:before {
+    position: relative;
+    opacity: 0.5;
+  }
+}
+.homeHeading {
+  margin: 0;
+  text-align: center;
+  padding: 5px 30px;
+  background-color: var(--primary-color);
+  width: 100vw;
+  color: white;
+  font-family: var(--primary-font);
+}
+.add-post {
+  float: right;
+  align-self: center;
+  justify-self: right;
+  font-size: 30px;
+}
+.fa-plus {
+  color: white;
+  cursor: pointer;
+}
+.fa-plus:hover {
+  color: black;
+}
+.post-heading {
+  background-color: var(--primary-color);
+  padding: 10px;
+}
+.smallPost li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.post-heading .published {
+  justify-self: center;
+  font-size: 1vw;
+}
+.postSummery {
+  width: 80vw;
+  margin: 3vw auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 2vw;
+}
+.smallPost {
+  margin: 2vw auto;
+  position: relative;
+  border: 2px solid #ccc;
+  padding-bottom: 2vw;
+}
+ul {
+  padding: 0;
+}
+.smallPost:hover {
+  // margin: 1vw auto;
+  box-shadow: 5px 5px 5px var(--primary-color);
+  border: none;
+}
+.smallPost:hover .post-heading {
+  color: white;
+}
+.home .search {
+  width: 20%;
+  float: right;
+  margin-right: 50px;
+}
+.smallPost a {
+  color: Black;
+  position: absolute;
+  bottom: 1vw;
+  right: 1vw;
+  padding-right: 10px;
+  text-decoration: none;
+}
+.smallPost a:hover {
+  background-color: transparent;
+  color: var(--primary-color);
+}
+.post-category {
+  font-size: 10px;
+  font-style: italic;
+}
+.post-title {
+  font-family: var(--primary-font);
+}
+.post-summary {
+  padding: 10px;
+}
+.navigation a {
+  text-decoration: none;
+}
+.navigation1 {
+  display: grid;
+  width: 50vw;
+  margin: 0 auto;
+  text-align: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 3vw;
+  font-family: var(--primary-font);
+}
+.active {
+  font-weight: bold;
+  color: orange;
+}
+.form {
+  width: 70vw;
+  margin: 3vw auto;
+}
+.form .input,
+.search {
+  width: 100%;
+  margin-top: 3vw;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: solid black 1px;
+}
+.form .textArea {
+  width: 100%;
+  background-color: transparent;
+  margin-top: 3vw;
+}
+.form div {
+  position: relative;
+  display: block;
+}
+.form label {
+  display: block;
+  position: absolute;
+  padding: 7px 0 0 0;
+  color: var(--primary-color);
+  font-size: 15px;
+  visibility: hidden;
+  font-weight: bold;
+}
+.selectMenu {
+  width: 200px;
+  color: white;
+  height: 35px;
+  margin-top: 30px;
+  overflow: hidden;
+  border-top: #575757 1px solid;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--primary-color);
+}
+.selectMenu option {
+  background-color: transparent;
+  color: black;
+  text-align: center;
+}
+
+.form input:not(:placeholder-shown) + label,
+input:focus + label,
+.form textarea:not(:placeholder-shown) + label,
+textarea:focus + label {
+  top: 0;
+  visibility: visible;
+  transition: 0.5s;
+}
+
+.form .errorMsg {
+  color: red;
+  font-style: italic;
+}
+.btnGrp {
+  width: 15vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2vw;
+}
+.btnGrp button {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: var(--primary-font);
+}
+.btnGrp button:hover {
+  background-color: white;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+
+.fullPost,
+.aboutApp {
+  width: 50vw;
+  margin: 3vw auto;
+  border-left: 2px solid var(--primary-color);
+  padding: 15px;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  color: white;
+  opacity: 0.7;
+  font-family: var(--primary-font);
+  text-align: center;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media only screen and (max-width: 938px) {
+  .add-post {
+    justify-self: center;
+    width: 100%;
+    text-align: center;
+  }
+  .homeHeading {
+    width: 100%;
+    text-align: center;
+  }
+  .collapsableNavigation {
+    text-align: center;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+  .form input:not(:placeholder-shown) + label,
+  input:focus + label,
+  .form textarea:not(:placeholder-shown) + label,
+  textarea:focus + label {
+    top: -10px;
+    font-size: 13px;
+  }
+  .fullPost {
+    border: none;
+  }
+  .navigation .btnGrp {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    text-align: center;
+  }
+  .navigation a {
+    margin-top: 3vw;
+    top: 0;
+  }
+  .form input {
+    margin-bottom: 30px;
+  }
+  .collapsableNavigation label {
+    text-align: center;
+  }
+  .collapsableNavigation li {
+    text-align: center;
+  }
+}

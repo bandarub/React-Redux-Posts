@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Routing from './components/Links';
 import Footer from "./components/Footer";
 
-import './App.css';
+import './styles.scss';
 
 class App extends Component {
 	getSelectedPost = (id) => { 

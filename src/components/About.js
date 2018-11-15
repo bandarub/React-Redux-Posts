@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="about-app">
+    <div className="aboutApp">
       <p>
           <h4>Summary</h4>
           <p>This is CRUD aplication.You can add,remove,update and delete the post</p>

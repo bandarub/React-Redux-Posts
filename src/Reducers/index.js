@@ -8,7 +8,6 @@ export const reducer = (state = initState.posts, action) => {
         return [...state.concat(action.post)];
       } else {
         return state.map(post => {
-          console.log(action.post);
           if (post.id === action.post.id) {
             return {
               ...post,

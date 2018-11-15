@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const PostIndex = props => {
   const { post } = props;
   return (
-    <ul className="small-post">
+    <ul className="smallPost">
       <div className="post-heading">
         <div>
           <li className="post-title">{post.title} </li>

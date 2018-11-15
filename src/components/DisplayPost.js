@@ -12,24 +12,23 @@ const DisplayPost = props => {
   };
   return (
     <div >
-      <div className="full-post">
+      <div className="fullPost">
         <h4>Title</h4>
         <p>{selctedPost.title}</p>
         <h4>Category</h4>
         <p>{selctedPost.category}</p>
         <h4>Content</h4>
         <p>{selctedPost.detail}</p>
-        <div className="btn-grp">
+        <div className="btnGrp">
           <button
             id={id}
-            className="save"
             onClick={() => {
               props.history.push(`/posts/${selctedPost.id}/edit`);
             }}
           >
             Edit
           </button>
-          <button id={id} onClick={handleDelete} className="cancel">
+          <button id={id} onClick={handleDelete}>
             Delete
           </button>
         </div>
